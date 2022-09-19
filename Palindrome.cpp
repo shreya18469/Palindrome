@@ -18,10 +18,26 @@ int main(){
   int count = 0;
   
   for (int i = 0; i <= len+1; i++){
-    if (str[i] != ' ' && str[i] != ',' && str[i] != ':' && str[i] != '.'){
+    if (str[i] != ' ' && ispunct(str[i]) == 0){
       str[count++] = tolower(str[i]);
     }
   }
-  cout << str << endl;
+  str[len] = '\0';
+  len = strlen(str);
+  
+  for (int i = 0; i <= len; i++){
+    if (str[i] >= 'a' && str[i] <= 'z'){
+      str2[i] = str[len-i-1];
+    }
+  }
+  str2[len] = '\0';
+  cout << "Phrase: " << str << endl;
+  cout << "Reversed phrase: " << str2 << endl;
+  
+  if (strcmp(str2, str) != 0){
+    cout << "NOT A PALINDROME" << endl;
+  } else {
+    cout << "IS A PALINDROME" << endl;
+  }
   return 0;
 }
